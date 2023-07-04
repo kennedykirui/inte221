@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Page-specific styles */
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #777;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Navigation styles */
+    header {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .nav li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .nav a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid red;
+      padding-bottom: 5px;
+    }
+
+    /* Styling for the active page link */
+    .active a {
+      text-decoration: underline;
+    }
+
+    /* Page container styles */
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    /* Show the active page container */
+    .active {
+      display: block;
+    }
+
+    /* Heading separator line */
+    .separator {
+      border: none;
+      height: 2px;
+      background-color: #333;
+      margin: 20px 0;
+    }
+
+    /* Styling for the section bar */
+    .section-bar {
+      background-color: #ccc;
+      height: 10px;
+      margin-top: 20px;
+    }
+
+    /* Styling for the bold line separator */
+    .bold-line {
+      border: none;
+      height: 4px;
+      background-color: #000;
+      margin: 40px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <ul class="nav">
+      <li><a href="#" onclick="navigate('home')">HOME</a></li>
+      <li><a href="#" onclick="navigate('about')">ABOUT</a></li>
+      <li><a href="#" onclick="navigate('services')">SERVICES</a></li>
+      <li><a href="#" onclick="navigate('contact')">CONTACT US</a></li>
+    </ul>
+  </header>
+
+  <!-- Page 1: Home -->
+  <div id="home" class="page active">
+    <div class="section-bar"></div>
+    <hr class="separator">
+  </div>
+
+  <!-- Page 2: About -->
+  <div id="about" class="page">
+    <div class="section-bar"></div>
+    <h1>About</h1>
+    <hr class="separator">
+    <p>This is the about page content.</p>
+  </div>
+
+  <!-- Page 3: Services -->
+  <div id="services" class="page">
+    <div class="section-bar"></div>
+    <h1>Services</h1>
+    <hr class="separator">
+    <p>This is the services page content.</p>
+  </div>
+
+  <!-- Page 4: Contact -->
+  <div id="contact" class="page">
+    <div class="section-bar"></div>
+    <h1>Contact</h1>
+    <hr class="separator">
+    <p>This is the contact page content.</p>
+  </div>
+
+  <hr class="bold-line">
+
+  <script>
+    function navigate(pageId) {
+      var pages = document.querySelectorAll('.page');
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove('active');
+      }
+      
+      var selectedPage = document.getElementById(pageId);
+      selectedPage.classList.add('active');
+    }
+  </script>
+</body>
+</html>
