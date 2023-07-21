@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* General styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Page-specific styles */
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #777;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* Navigation styles */
+    header {
+      background-color: #f9f9f9;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .nav li {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    .nav a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid red;
+      padding-bottom: 5px;
+    }
+
+    /* Styling for the active page link */
+    .active a {
+      text-decoration: underline;
+    }
+
+    /* Page container styles */
+    .page {
+      display: none;
+      padding: 20px;
+    }
+
+    /* Show the active page container */
+    .active {
+      display: block;
+    }
+
+    /* Heading separator line */
+    .separator {
+      border: none;
+      height: 2px;
+      background-color: #333;
+      margin: 20px 0;
+    }
+
+    /* Styling for the section bar */
+    .section-bar {
+      background-color: #ccc;
+      height: 10px;
+      margin-top: 20px;
+    }
+
+    /* Styling for the bold line separator */
+    .bold-line {
+      border: none;
+      height: 4px;
+      background-color: #000;
+      margin: 40px 0;
+    }
+
+    /* Styling for the map container */
+    #map {
+      height: 400px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <ul class="nav">
+      <li><a href="#" onclick="navigate('home')">HOME</a></li>
+      <li><a href="#" onclick="navigate('about')">ABOUT</a></li>
+      <li><a href="#" onclick="navigate('services')">SERVICES</a></li>
+      <li><a href="#" onclick="navigate('contact')">CONTACT US</a></li>
+    </ul>
+  </header>
+
+  <!-- Page 1: Home -->
+  <div id="home" class="page active">
+    <div class="section-bar"></div>
+    <hr class="separator">
+  </div>
+
+  <!-- Page 2: About -->
+  <div id="about" class="page">
+    <div class="section-bar"></div>
+    <h1>About</h1>
+    <hr class="separator">
+    <p>This is the about page content.</p>
+  </div>
+
+  <!-- Page 3: Services -->
+  <div id="services" class="page">
+    <div class="section-bar"></div>
+    <h1>Services</h1>
+    <hr class="separator">
+    <p>This is the services page content.</p>
+  </div>
+
+  <!-- Page 4: Contact -->
+  <div id="contact" class="page">
+    <div class="section-bar"></div>
+    <h1>Contact</h1>
+    <hr class="separator">
+    <p>Call: 0715455844</p>
+    <p>Find us on Facebook <a href="https://www.facebook.com/KennyRui" target="_blank">@Kenny Rui</a></p>
+    <!-- Leaflet Map container -->
+    <div id="map"></div>
+  </div>
+
+  <hr class="bold-line">
+
+  <script>
+    function navigate(pageId) {
+      var pages = document.querySelectorAll('.page');
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove('active');
+      }
+      
+      var selectedPage = document.getElementById(pageId);
+      selectedPage.classList.add('active');
+    }
+  </script>
+
+  <!-- Load Leaflet from a CDN -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <script>
+    // Function to initialize the map
+    function initMap() {
+      // Specify the coordinates for the center of the map
+      var centerCoords = { lat: -0.1675909149623932, lng: 35.96532060025607 };
+
+      // Create a new map instance
+      var map = L.map('map').setView(centerCoords, 14);
+
+      // Add a tile layer from OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+      // Add a marker to the map at the specified coordinates
+      L.marker(centerCoords).addTo(map).bindPopup('Your Location');
+    }
+  </script>
+</body>
+</html>
